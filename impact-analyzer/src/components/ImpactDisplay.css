@@ -78,11 +78,11 @@ ul {
 }
 
 .impact-tag.direct {
-  background: #e74c3c;
+   background: #e74c3c;
 }
 
 .impact-tag.indirect {
-  background: #f39c12;
+   background: #f39c12;
 }
 
 /* Modules */

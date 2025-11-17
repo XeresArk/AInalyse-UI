@@ -1,43 +1,73 @@
-import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import { useNavigate, useLocation } from "react-router-dom";
+import Tabs from "../components/Tabs";
 import Card from "../components/Card";
+import DiffAnalyzer from "./DiffAnayzer";
+import DatabaseAnalyzer from "./DatabaseAnalyzer";
 
 
-export default function Dashboard() {
+const TAB_DIFF = "diff";
+const TAB_DB = "database";
+
+
+export default function Dashboard({ openTab }) {
 const navigate = useNavigate();
-const [diff, setDiff] = useState("");
-const [app, setApp] = useState("");
+const location = useLocation();
+const queryTab = openTab || new URLSearchParams(location.search).get("tab");
+
+
+const [activeTab, setActiveTab] = useState(queryTab || TAB_DIFF);
+const [analyzerPayload, setAnalyzerPayload] = useState({});
+
+
+useEffect(() => {
+if (queryTab) setActiveTab(queryTab);
+}, [queryTab]);
 
 
 const onAnalyze = () => {
+// validation: either diff input (non-empty) OR application selected OR for DB ensure schema/table/columns
+if (activeTab === TAB_DIFF) {
+const { diff, app } = analyzerPayload;
 if (!diff && !app) {
 alert("Please enter diff or select an application.");
 return;
 }
-navigate("/analysis", { state: { diff, app } });
+} else {
+const { schema, table, columns } = analyzerPayload;
+if (!schema || !table || !columns || columns.length === 0) {
+alert("Please select schema, table and at least one column.");
+return;
+}
+}
+
+
+navigate("/analysis", { state: { ...analyzerPayload } });
 };
 
 
 return (
 <div className="page">
-<Card title="Analyze Application Impact">
-<label>Paste Diff / CURL</label>
-<textarea
-className="textarea"
-placeholder="Enter diff or CURL..."
-value={diff}
-onChange={(e) => setDiff(e.target.value)}/>
+<Card>
+<Tabs
+tabs={[{ key: TAB_DIFF, label: "Diff / CURL" }, { key: TAB_DB, label: "Database Schema" }]}
+active={activeTab}
+onChange={(k) => setActiveTab(k)}
+/>
 
 
-<label>Select Application</label>
-<select className="select" value={app} onChange={(e) => {setApp(e.target.value); setDiff("");}}>
-<option value="">-- Select Application --</option>
-<option value="EmployeeApp">Employee App</option>
-<option value="DepartmentApp">Department App</option>
-</select>
+<div className="tab-content">
+{activeTab === TAB_DIFF ? (
+<DiffAnalyzer onChange={(p) => setAnalyzerPayload(p)} />
+) : (
+<DatabaseAnalyzer onChange={(p) => setAnalyzerPayload(p)} />
+)}
 
 
+<div style={{ marginTop: 18 }}>
 <button className="btn-primary" onClick={onAnalyze}>Analyze Impact</button>
+</div>
+</div>
 </Card>
 </div>
 );
