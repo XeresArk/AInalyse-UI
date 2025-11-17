@@ -1,0 +1,88 @@
+body {
+margin: 0;
+font-family: "Segoe UI", sans-serif;
+background: #eef1f7;
+}
+
+
+.navbar {
+background: linear-gradient(90deg, #141e30, #243b55);
+color: white;
+padding: 18px 25px;
+font-size: 24px;
+box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+}
+
+
+.page {
+max-width: 900px;
+margin: 30px auto;
+padding: 20px;
+}
+
+
+.card {
+background: white;
+padding: 25px;
+border-radius: 12px;
+box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+margin-bottom: 25px;
+}
+
+
+.card-title {
+margin-top: 0;
+margin-bottom: 15px;
+font-size: 22px;
+color: #222;
+}
+
+
+.textarea {
+width: 97%;
+height: 130px;
+padding: 12px;
+font-size: 15px;
+border: 1px solid #ccc;
+border-radius: 8px;
+resize: vertical;
+margin-bottom: 20px;
+}
+
+
+.select {
+width: 100%;
+padding: 12px;
+border-radius: 8px;
+border: 1px solid #ccc;
+margin-bottom: 20px;
+font-size: 16px;
+}
+
+
+.btn-primary {
+background: #005eff;
+color: white;
+padding: 14px 22px;
+border: none;
+font-size: 17px;
+border-radius: 8px;
+cursor: pointer;
+width: 100%;
+margin-top: 10px;
+transition: 0.2s;
+}
+.btn-primary:hover {
+background: #0041c4;
+}
+
+
+.btn-link {
+background: #009688;
+padding: 12px 20px;
+color: white;
+border: none;
+display: block;
+margin: 20px auto;
+width: 200px;
+}

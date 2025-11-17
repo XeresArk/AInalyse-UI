@@ -1,0 +1,157 @@
+.impact-container {
+  max-width: 900px;
+  margin: 20px auto;
+  padding: 20px;
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+  font-family: Arial, sans-serif;
+}
+
+.impact-title {
+  text-align: center;
+  margin-bottom: 20px;
+  font-size: 26px;
+  font-weight: bold;
+  color: #333;
+}
+
+/* Impact Score */
+.impact-score-box {
+  text-align: center;
+  margin-bottom: 25px;
+  padding: 20px;
+  background: #f4f4f4;
+  border-radius: 10px;
+}
+
+.impact-score {
+  font-size: 48px;
+  font-weight: bold;
+  color: #0074d9;
+}
+
+.impact-score-label {
+  font-size: 14px;
+  color: #666;
+  margin-top: 5px;
+}
+
+/* Sections */
+.impact-section {
+  margin-top: 20px;
+}
+
+.impact-section h3 {
+  font-size: 20px;
+  margin-bottom: 10px;
+  color: #222;
+}
+
+/* Lists */
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.impact-item {
+  padding: 10px;
+  background: #fafafa;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  margin-bottom: 8px;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* Tags */
+.impact-tag {
+  background: #0074d9;
+  color: white;
+  padding: 4px 10px;
+  border-radius: 6px;
+  font-size: 12px;
+  text-transform: capitalize;
+}
+
+.impact-tag.direct {
+  background: #e74c3c;
+}
+
+.impact-tag.indirect {
+  background: #f39c12;
+}
+
+/* Modules */
+.impact-modules {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.impact-module {
+  padding: 8px 12px;
+  border-radius: 6px;
+  background: #e8f4ff;
+  border: 1px solid #b6dcff;
+  font-size: 13px;
+}
+
+/* Link */
+.impact-link {
+  color: #0074d9;
+  text-decoration: none;
+  font-size: 14px;
+}
+
+.impact-link:hover {
+  text-decoration: underline;
+}
+
+/* Reasoning */
+.impact-reasoning {
+  background: #f9f9f9;
+  padding: 12px;
+  border-radius: 8px;
+  border: 1px solid #e0e0e0;
+  font-size: 14px;
+  line-height: 1.5;
+  color: #333;
+}
+
+
+/* Stats Grid */
+.cq-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+  margin-top: 15px;
+}
+
+.cq-box {
+  background: #f4f4f4;
+  padding: 12px;
+  border-radius: 10px;
+  text-align: center;
+}
+
+.cq-box-label {
+  font-size: 12px;
+  color: #666;
+}
+
+.cq-box-value {
+  font-size: 20px;
+  font-weight: bold;
+  margin-top: 4px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .cq-card {
+    grid-template-columns: 1fr;
+  }
+}
