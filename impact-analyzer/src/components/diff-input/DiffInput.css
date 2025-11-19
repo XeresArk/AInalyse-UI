@@ -1,0 +1,65 @@
+.diff-input-wrapper {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+h2 {
+  font-size: 20px;
+  font-weight: 700;
+  color: #2f3b4a;
+  margin-bottom: 10px;
+}
+
+/* Textarea styling */
+.form-control {
+  width: 100%;
+  padding: 12px;
+  font-size: 14px;
+  border: 1px solid #d5d9e0;
+  border-radius: 10px;
+  outline: none;
+  background: white;
+  resize: vertical;
+  transition: border 0.25s ease, box-shadow 0.25s ease;
+}
+
+.form-control:focus {
+  border-color: #4a8bff;
+  box-shadow: 0 0 6px rgba(74, 139, 255, 0.35);
+}
+
+/* Submit button */
+.btn-submit {
+  background: #4a8bff;
+  padding: 10px 16px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 600;
+  color: white;
+  transition: background 0.25s ease, transform 0.2s ease;
+}
+
+.btn-submit:hover {
+  background: #3c7bf5;
+  transform: translateY(-2px);
+}
+
+.btn-submit:active {
+  transform: translateY(0px);
+}
+
+/* JSON preview box */
+.preview-box {
+  background: #f8fafc;
+  padding: 14px;
+  border-radius: 8px;
+  border: 1px solid #e2e8f0;
+  font-size: 13px;
+  color: #475569;
+  overflow: auto;
+  margin-top: 10px;
+}

@@ -1,0 +1,61 @@
+.app-selection-wrapper {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+h2 {
+  font-size: 20px;
+  font-weight: 700;
+  color: #2f3b4a;
+  margin-bottom: 10px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.form-group label {
+  font-size: 14px;
+  font-weight: 600;
+  color: #334155;
+}
+
+.form-control {
+  width: 100%;
+  padding: 10px 12px;
+  font-size: 14px;
+  border: 1px solid #d5d9e0;
+  border-radius: 10px;
+  outline: none;
+  background: white;
+  transition: border 0.25s ease, box-shadow 0.25s ease;
+}
+
+.form-control:focus {
+  border-color: #4a8bff;
+  box-shadow: 0 0 6px rgba(74, 139, 255, 0.35);
+}
+
+.form-control[multiple] {
+  height: 130px;
+  padding: 8px;
+}
+
+.form-control option {
+  padding: 6px;
+  font-size: 14px;
+}
+
+pre {
+  background: #f8fafc;
+  padding: 14px;
+  border-radius: 8px;
+  border: 1px solid #e2e8f0;
+  font-size: 13px;
+  color: #475569;
+  overflow: auto;
+}

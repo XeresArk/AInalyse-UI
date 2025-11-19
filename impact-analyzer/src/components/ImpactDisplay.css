@@ -84,7 +84,9 @@ ul {
 .impact-tag.indirect {
    background: #f39c12;
 }
-
+.impact-yellow {
+   background: #d9eb38;
+}
 /* Modules */
 .impact-modules {
   display: flex;
@@ -120,33 +122,6 @@ ul {
   font-size: 14px;
   line-height: 1.5;
   color: #333;
-}
-
-
-/* Stats Grid */
-.cq-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 10px;
-  margin-top: 15px;
-}
-
-.cq-box {
-  background: #f4f4f4;
-  padding: 12px;
-  border-radius: 10px;
-  text-align: center;
-}
-
-.cq-box-label {
-  font-size: 12px;
-  color: #666;
-}
-
-.cq-box-value {
-  font-size: 20px;
-  font-weight: bold;
-  margin-top: 4px;
 }
 
 /* Responsive */

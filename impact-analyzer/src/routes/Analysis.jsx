@@ -1,30 +1,28 @@
 import { useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
-import { analyzeImpact } from "../api/analyzeImpact";
 import ImpactDisplay from "../components/ImpactDisplay";
 
 export default function Analysis() {
   const { state } = useLocation();
   const navigate = useNavigate();
 
-  const [result, setResult] = useState(null);
+  const [result, setResult] = useState();
 
   useEffect(() => {
     const fetchAnalysis = async () => {
         console.log(state)
-      // analyzeImpact(state).then((res) => setResult(res));
+      const { analyzerPayload, mode} = state;
 
-      const {diff, app} = state;
-      if (diff) {
+      if (mode === 'appSelection') {
         try {
           const response = await fetch(
-            "http://localhost:8080/api/gemini/codeDiffAnalyse",
+            "http://localhost:8080/api/gemini/latestCommitAnalyse",
             {
               method: "POST",
               headers: {
                 "Content-Type": "application/json",
               },
-              body: JSON.stringify({ diff }),
+              body: JSON.stringify(analyzerPayload),
             }
           );
 
@@ -41,10 +39,38 @@ export default function Analysis() {
             message: error.message || "Unknown error occurred",
           };
         }
-      } else {
+      }
+      if (mode === 'diffInput') {
         try {
           const response = await fetch(
-            `http://localhost:8080/api/gemini/latestCommitAnalyse?serviceName=${app}`,
+            "http://localhost:8080/api/gemini/codeDiffAnalyse",
+            {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json",
+              },
+              body: JSON.stringify(analyzerPayload),
+            }
+          );
+
+          if (!response.ok) {
+            throw new Error("API request failed");
+          }
+
+          const data = await response.json();
+          setResult(data);
+        } catch (error) {
+          console.error("Error:", error);
+          return {
+            error: true,
+            message: error.message || "Unknown error occurred",
+          };
+        }
+      }
+      if (mode === 'database'){
+        try {
+          const response = await fetch(
+            `http://localhost:8080/api/databaseURL`,
             {
               method: "GET",
               headers: {
