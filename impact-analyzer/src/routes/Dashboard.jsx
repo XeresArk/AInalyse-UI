@@ -73,8 +73,10 @@ export default function Dashboard({ openTab }) {
       }
     );
 
-    const data = await response.json();
-    alert("Dependency Map Generated Successfully!");
+    const data = await response.ok;
+    if(data) {
+      alert("Dependency Map Generated Successfully!");
+    }
   };
 
   return (
@@ -83,9 +85,9 @@ export default function Dashboard({ openTab }) {
         <Tabs
           tabs={[
             { key: TAB_DEP, label: "Dependency Map" },
-            { key: TAB_APP, label: "App Selection" },
-            { key: TAB_DIFF, label: "Diff Input" },
-            { key: TAB_DB, label: "Database Schema" },
+            { key: TAB_APP, label: "Commit Impact" },
+            { key: TAB_DIFF, label: "Diff Impact" },
+            { key: TAB_DB, label: "Database Impact" },
           ]}
           active={activeTab}
           onChange={(k) => setActiveTab(k)}

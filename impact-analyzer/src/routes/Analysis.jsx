@@ -70,12 +70,13 @@ export default function Analysis() {
       if (mode === 'database'){
         try {
           const response = await fetch(
-            `http://localhost:8080/api/databaseURL`,
+            `http://localhost:8080/api/database/getDbImpact`,
             {
-              method: "GET",
+              method: "POST",
               headers: {
                 "Content-Type": "application/json",
               },
+              body: JSON.stringify(analyzerPayload),
             }
           );
 

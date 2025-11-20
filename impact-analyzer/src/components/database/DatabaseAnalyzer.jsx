@@ -14,16 +14,9 @@ export default function DatabaseAnalyzer({ onChange }) {
   // -----------------------------------------
   const loadDatabaseDetails = async () => {
     try {
-    //   const res = await fetch("/api/database/getTableDetails");
-    //   const data = await res.json();
-    const data = {
-  "schemaName": "HACKATHON",
-  "tables": {
-    "EMPLOYEE": ["EMP_ID","EMP_NAME","DEPARTMENT_ID","SALARY"],
-    "DEPARTMENT": ["DEPARTMENT_ID","DEPARTMENT_NAME"]
-  }
-};
-
+      const res = await fetch("http://localhost:8080/api/database/getTableDetails");
+      const data = await res.json();
+    
       // SET DATA IN CORRECT ORDER
       setSchema(data.schemaName);     
       setTablesMap(data.tables);      
