@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import "./AppSelection.css";
 
 export default function AppSelection({ onChange }) {
-  const apps = ["EmployeeApp", "DepartmentApp"];
+  const apps = ["EmployeeApp", "DepartmentApp", "DatabaseRepo"];
   const dependencyOptions = ["EmployeeApp", "DepartmentApp"];
 
   const [selectedApp, setSelectedApp] = useState("");

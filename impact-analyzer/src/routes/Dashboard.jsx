@@ -65,7 +65,7 @@ export default function Dashboard({ openTab }) {
 
   const dependencyMapAPI = async () => {
     const response = await fetch(
-      "http://localhost:8082/api/dependency-map/generateJson",
+      "http://localhost:8080/api/dependency-map/generateJson",
       {
         method: "POST",
         headers: { "Content-Type": "application/json" },
