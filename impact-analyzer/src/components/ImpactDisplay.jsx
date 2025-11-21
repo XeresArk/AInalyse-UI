@@ -9,7 +9,7 @@ export default function ImpactDisplay({ data }) {
     <div className="impact-container">
       
       {/* Impact Title */}
-      <h2 className="impact-title">Impact Analysis Result</h2>
+      <h2 className="impact-title">AInalyse Result</h2>
 
       {/* Impact Score */}
       {data.impactScore !== null &&

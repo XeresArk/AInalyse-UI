@@ -85,9 +85,9 @@ export default function Dashboard({ openTab }) {
         <Tabs
           tabs={[
             { key: TAB_DEP, label: "Dependency Map" },
-            { key: TAB_APP, label: "Commit Impact" },
-            { key: TAB_DIFF, label: "Diff Impact" },
-            { key: TAB_DB, label: "Database Impact" },
+            { key: TAB_APP, label: "Commit Analyser" },
+            { key: TAB_DIFF, label: "Diff Analyser" },
+            { key: TAB_DB, label: "Database Analyser" },
           ]}
           active={activeTab}
           onChange={(k) => setActiveTab(k)}
