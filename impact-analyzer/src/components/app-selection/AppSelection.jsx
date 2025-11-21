@@ -2,13 +2,27 @@ import React, { useState, useEffect } from "react";
 import "./AppSelection.css";
 
 export default function AppSelection({ onChange }) {
-  const apps = ["EmployeeApp", "DepartmentApp", "DatabaseRepo"];
-  const dependencyOptions = ["EmployeeApp", "DepartmentApp"];
+
+  const [apps, setApps] = useState([]);
+  const [dependencyOptions, setDependencyOptions] = useState([]);
 
   const [selectedApp, setSelectedApp] = useState("");
   const [selectedDependencies, setSelectedDependencies] = useState([]);
 
-  // Update parent Dashboard whenever values change
+  // Fetch apps and dependencies from API
+  useEffect(() => {
+    fetch("http://localhost:8080/api/dependency-map/getServiceNames")
+      .then(res => res.json())
+      .then(data => setApps(data))
+      .catch(err => console.error("Failed to load apps:", err));
+
+    fetch("http://localhost:8080/api/dependency-map/getDependencyMapNames")
+      .then(res => res.json())
+      .then(data => setDependencyOptions(data))
+      .catch(err => console.error("Failed to load dependencies:", err));
+  }, []);
+
+  // Notify parent on change
   useEffect(() => {
     onChange({
       serviceName: selectedApp,
@@ -33,6 +47,7 @@ export default function AppSelection({ onChange }) {
           onChange={(e) => setSelectedApp(e.target.value)}
         >
           <option value="">-- Select --</option>
+
           {apps.map(app => (
             <option key={app} value={app}>{app}</option>
           ))}

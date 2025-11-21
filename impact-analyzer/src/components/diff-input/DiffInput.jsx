@@ -3,11 +3,21 @@ import "./DiffInput.css";
 
 export default function DiffInput({ onChange }) {
   const [diff, setDiff] = useState("");
-  const dependencyOptions = ["EmployeeApp", "DepartmentApp"];
+
+  const [dependencyOptions, setDependencyOptions] = useState([]);
   const [selectedDependencies, setSelectedDependencies] = useState([]);
 
+  // ✅ Fetch dependency list from API
   useEffect(() => {
-    onChange({ diff, dependencyMaps : selectedDependencies });
+    fetch("http://localhost:8080/api/dependency-map/getDependencyMapNames")
+      .then(res => res.json())
+      .then(data => setDependencyOptions(data))
+      .catch(err => console.error("Failed to load dependencies:", err));
+  }, []);
+
+  // Update parent whenever values change
+  useEffect(() => {
+    onChange({ diff, dependencyMaps: selectedDependencies });
   }, [diff, selectedDependencies]);
 
   const handleDependencyChange = (e) => {

@@ -50,10 +50,10 @@ export default function Dashboard({ openTab }) {
     }
 
     if (activeTab === TAB_DEP) {
-      const { projectName, projectPath, outputPath } = analyzerPayload;
-      if (!projectName || !projectPath || !outputPath)
+      const { projectName, projectPath } = analyzerPayload;
+      if (!projectName || !projectPath)
         return alert("Dependency Map config missing.");
-      setAnalyzerPayload({ projectName, projectPath, outputPath });
+      setAnalyzerPayload({ projectName, projectPath });
       dependencyMapAPI();
       return;
     }

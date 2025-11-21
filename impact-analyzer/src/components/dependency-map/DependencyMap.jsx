@@ -3,39 +3,50 @@ import "./DependencyMap.css";
 
 export default function DependencyMap({ onFormChange }) {
   const [selection, setSelection] = useState("");
+
   const [form, setForm] = useState({
     projectName: "",
-    projectPath: "",
-    outputPath: ""
+    projectPath: ""
   });
 
   const predefined = {
     EmployeeApp: {
       projectName: "EmployeeApp",
-      projectPath: "D:\\Work\\EmployeeApp",
-      outputPath: "D:\\Work\\DependencyMap",
+      projectPath: "D:\\Work\\EmployeeApp"
     },
     DepartmentApp: {
       projectName: "DepartmentApp",
-      projectPath: "D:\\Work\\DepartmentApp",
-      outputPath: "D:\\Work\\DependencyMap",
-    },
+      projectPath: "D:\\Work\\DepartmentApp"
+    }
   };
+
+  const isCustom = selection === "Custom";
 
   const handleSelection = (value) => {
     setSelection(value);
-    const updated = predefined[value] || {
-      projectName: "",
-      projectPath: "",
-      outputPath: ""
-    };
-    setForm(updated);
 
-    // Pass updated form to parent (Dashboard.jsx)
-    if (onFormChange) onFormChange(updated);
+    if (predefined[value]) {
+      setForm(predefined[value]);
+    } else {
+      setForm({
+        projectName: "",
+        projectPath: ""
+      });
+    }
   };
 
-  // When form changes manually (future editable), notify parent
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+
+    // Only allow changes when Custom is selected
+    if (!isCustom) return;
+
+    setForm((prev) => ({
+      ...prev,
+      [name]: value
+    }));
+  };
+
   useEffect(() => {
     if (onFormChange) onFormChange(form);
   }, [form]);
@@ -54,16 +65,26 @@ export default function DependencyMap({ onFormChange }) {
           <option value="">Select</option>
           <option value="EmployeeApp">EmployeeApp</option>
           <option value="DepartmentApp">DepartmentApp</option>
+          <option value="Custom">Custom</option>
         </select>
 
         <label>Project Name</label>
-        <input className="dep-input" value={form.projectName} readOnly />
+        <input
+          className="dep-input"
+          name="projectName"
+          value={form.projectName}
+          onChange={handleInputChange}
+          disabled={!isCustom}
+        />
 
         <label>Project Path</label>
-        <input className="dep-input" value={form.projectPath} readOnly />
-
-        <label>Output Path</label>
-        <input className="dep-input" value={form.outputPath} readOnly />
+        <input
+          className="dep-input"
+          name="projectPath"
+          value={form.projectPath}
+          onChange={handleInputChange}
+          disabled={!isCustom}
+        />
       </div>
     </div>
   );
